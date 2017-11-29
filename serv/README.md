@@ -1,15 +1,4 @@
-# Projet XML Master 1 MIAGE 2017-2018
-
-## Description
-
-Le lien vers le sujet du projet se trouve [ici](http://www-sop.inria.fr/members/Philippe.Poulard/projet-miage-2017.html)
-
-## Contributeurs
-
-* Etienne Laskar
-* Anthony Reigner
-* Thibault Fagnola
-* Rémi Lelaidier
+# API REST
 
 ## Installation
 
@@ -20,3 +9,7 @@ Pour lancer le projet :
 ```terminal
 $ mvn jetty:run
 ```
+
+## Reminder
+
+Oubliez pas d'installer Maven (on sait jamais)
