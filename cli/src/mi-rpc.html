@@ -1,0 +1,106 @@
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+
+<script>
+/**
+* MiRPC
+* Used to make calls on API
+*
+*/
+class MiRpc extends Polymer.Element {
+
+  static get properties(){
+    return {
+      localStorage: {
+          type: Object,
+          value: {},
+          notify: true
+      },
+      ironAjax: Object,
+      serverPath: String
+    }
+  }
+
+  ready() {
+    super.ready();
+    this.serverPath = window.Polymer.serverPath;
+    if(!this.ironAjax){
+        this.ironAjax = document.createElement('iron-ajax');
+        this.ironAjax.id = "miRPC";
+    }
+  }
+
+  connectedCallback(){
+    super.connectedCallback();
+    this.attachShadow({ mode: 'open' });
+
+    this.ironAjax.addEventListener('response', (event) => this._dispatchResponse(event));
+    this.ironAjax.addEventListener('error', (event) => this._dispatchError(event));
+  }
+
+  /**
+  * @function sendData
+  * @param url : url to the api functionnality
+  * @param data : structured data
+  * @param method : http method
+  * @param auth : authenticated call
+  *
+  * @return void
+  */
+  sendData(url, method, data = [], auth = false){
+    // If authenticated request to API
+    if (auth) {
+      const token = localStorage.getItem("authToken");
+      this.ironAjax.headers = {
+        "Authorization": "Bearer " + token
+      }
+    }
+    // Build the request
+    const fullUrl = this.serverPath + url;
+    this.ironAjax.url = fullUrl;
+    this.ironAjax.contentType = "application/json";
+    this.ironAjax.body = JSON.stringify(data);
+    this.ironAjax.handleAs = "json";
+    this.ironAjax.method = method;
+
+    this.ironAjax.generateRequest();
+  }
+
+  _refresh(){
+    // this.sendData('/auth/refresh', 'POST', { 'refreshToken': localStorage.getItem('refreshToken') });
+  }
+
+  _retry(data){
+    // this.sendData() with data infos
+  }
+
+  _dispatchResponse(data){
+    return new Promise((resolve, reject) => {
+      const event = new CustomEvent('rpcResponse', {detail: {data:data.detail, route: this._getApiRoute(data.detail.url)}, bubbles: true});
+      
+      // Bubbling ? -> https://www.sitepoint.com/event-bubbling-javascript/
+      this.dispatchEvent(event);
+      resolve();
+    });
+  }
+
+  _dispatchError(data){
+    return new Promise((resolve, reject) => {
+      const event = new CustomEvent('rpcError', {detail: {data:data.detail, route: this._getApiRoute(data.detail.url)}, bubbles: true});
+
+      if(data.detail.response.status === 401){
+        this._refresh();
+        this._retry(data);
+      }
+
+      this.dispatchEvent(event);
+      resolve();
+    });
+  }
+
+  _getApiRoute(url){
+    return url.replace(this.serverPath, '');
+  }
+}
+
+customElements.define('mi-rpc', MiRpc);
+</script>
