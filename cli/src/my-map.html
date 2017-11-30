@@ -32,13 +32,50 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <div class="card">
       <h1>Carte des centres de recherches</h1>
       <p>Les centres de recherches de l'INRIA sont trouvables ici<p>
-      <google-map latitude="37.77493" longitude="-122.41942" api-key="AIzaSyBoFJIoqc8uOyt9Tui2MohrLxIgbrXsHl0"></google-map>
+      <google-map id="map"></google-map>
     </div>
   </template>
 
   <script>
     class MyMap extends Polymer.Element {
       static get is() { return 'my-map'; }
+
+      /**
+       *  Properties
+       */
+      static get properties() {
+        return {
+          apiKey: {
+            type: String,
+            value: "AIzaSyBoFJIoqc8uOyt9Tui2MohrLxIgbrXsHl0"
+          },
+          defLat: {
+            type: String,
+            value: "43.615817"
+          },
+          defLon: {
+            type: String,
+            value: "7.0661913"
+          },
+          defZoom: {
+            type: Number,
+            value: 10
+          }
+        };
+      }
+
+      /**
+       *  ready lifecycle
+       */
+      ready() {
+        super.ready();
+        // Configure map
+        let map = this.shadowRoot.getElementById("map");
+        map.apiKey = this.apiKey;
+        map.latitude = this.defLat;
+        map.longitude = this.defLon;
+        map.zoom = this.defZoom;
+      }
     }
 
     window.customElements.define(MyMap.is, MyMap);
