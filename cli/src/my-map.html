@@ -32,7 +32,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <div class="card">
       <h1>Carte des centres de recherches</h1>
       <p>Les centres de recherches de l'INRIA sont trouvables ici<p>
-      <google-map id="map"></google-map>
+      <google-map id="map" api-key="AIzaSyBoFJIoqc8uOyt9Tui2MohrLxIgbrXsHl0"></google-map>
     </div>
   </template>
 
@@ -45,10 +45,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        */
       static get properties() {
         return {
-          apiKey: {
-            type: String,
-            value: "AIzaSyBoFJIoqc8uOyt9Tui2MohrLxIgbrXsHl0"
-          },
           defLat: {
             type: String,
             value: "43.615817"
@@ -59,9 +55,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           },
           defZoom: {
             type: Number,
-            value: 10
+            value: 18
+          },
+          _shadowRoot: {
+            type: Object
           }
         };
+      }
+
+      /**
+       *  construct lifecycle
+       */
+      constructor(){
+        super();
+        // For getting the bubbles
+        this._shadowRoot = this.attachShadow({ mode: 'open' });
+
+        // Listen on RPCEvent fire from mi-rpc component
+        this._shadowRoot.addEventListener('rpcError', (event) => this._onRpcError(event));
+        this._shadowRoot.addEventListener('rpcResponse', (event) => this._onRpcResponse(event));
+      }
+
+      connectedCallback(){
+        super.connectedCallback();
       }
 
       /**
@@ -71,10 +87,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         super.ready();
         // Configure map
         let map = this.shadowRoot.getElementById("map");
-        map.apiKey = this.apiKey;
         map.latitude = this.defLat;
         map.longitude = this.defLon;
         map.zoom = this.defZoom;
+      }
+
+      // Action on RPC Error
+      _onRpcError(event){
+        console.log(event);
+      }
+
+      // Action on RPC Response
+      _onRpcResponse(event){
+        console.log(event);
       }
     }
 
