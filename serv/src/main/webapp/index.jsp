@@ -20,9 +20,11 @@
             <td><a href="api/centers/list">/centers/list</a></td>
             <td>La liste des centres de recherches de l'INRIA avec pour chaque centre :<ul><li>Nom du centre</li><li>La localisation du centre(longitude , latitude)</li><li>Nombre d'équipes actives dans le centre</li><li>Nombre d'équipes fermées dans le centre</li><li>Nombre de personnes par centre</li></ul></td>
         </tr>
+        <tr>
+            <td>GET</td>
+            <td><a href="api/centers/1">/centers/{id} id = 1</a></td>
+            <td>Les informations d'un centre désigné par son id : <ul><li>Nom du centre</li><li>Nombre de personnes dans le centre</li><li>Nombre d'équipes actives dans le centre</li><li>Nombre d'équipes fermées dans le centre</li></ul></td>
+        </tr>
     </table>
-    <p>
-    <p>Visit <a href="http://jersey.java.net">Project Jersey website</a>
-    for more information on Jersey!
 </body>
 </html>
