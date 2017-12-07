@@ -1,0 +1,398 @@
+<crs>
+    <cr siid="CR0001I">
+        <numnatstructrep>200818243Z</numnatstructrep>
+        <date_ouverture>01/01/2008</date_ouverture>
+        <date_fermeture/>
+        <sigle>BSO</sigle>
+        <libelle>CRI Bordeaux - Sud-Ouest</libelle>
+        <idgef>9</idgef>
+        <adressegeographique siid="AD0001N">
+            <libelle>
+                <![CDATA[ CRI Bordeaux ]]>
+            </libelle>
+            <cri siid="CR0001I">BSO</cri>
+            <ville>
+                <![CDATA[ Talence Cedex ]]>
+            </ville>
+            <adresse>
+                <![CDATA[ 200, avenue de la Vieille Tour ]]>
+            </adresse>
+            <cp>
+                <![CDATA[ 33400 ]]>
+            </cp>
+            <latitude>44.808114</latitude>
+            <longitude>-0.602171</longitude>
+        </adressegeographique>
+        <responsable fonction="dcr">
+            <personne gefid="nrous00A">
+                <nom>Roussel</nom>
+                <prenom>Nicolas</prenom>
+            </personne>
+        </responsable>
+        <responsable fonction="ds">
+            <personne gefid="engez00A">
+                <nom>Enge</nom>
+                <prenom>Andreas</prenom>
+            </personne>
+        </responsable>
+        <responsable fonction="da">
+            <personne gefid="00006D7G">
+                <nom>Salles</nom>
+                <prenom>Dominique</prenom>
+            </personne>
+        </responsable>
+        <responsable fonction="vpcp">
+            <personne gefid="falex00B">
+                <nom>Alexandre</nom>
+                <prenom>Frederic</prenom>
+            </personne>
+        </responsable>
+    </cr>
+    <cr siid="CR0002O">
+        <numnatstructrep>199218244V</numnatstructrep>
+        <date_ouverture>01/01/1992</date_ouverture>
+        <date_fermeture/>
+        <sigle>GRA</sigle>
+        <libelle>CRI Grenoble - Rhône-Alpes</libelle>
+        <idgef>7</idgef>
+        <adressegeographique siid="AD0003V">
+            <libelle>
+                <![CDATA[ CRI Grenoble ]]>
+            </libelle>
+            <cri siid="CR0002O">GRA</cri>
+            <ville>
+                <![CDATA[ Montbonnot St Martin ]]>
+            </ville>
+            <adresse>
+                <![CDATA[ 655 avenue de l'Europe Montbonnot - CS 90051 ]]>
+            </adresse>
+            <cp>
+                <![CDATA[ 38334 ]]>
+            </cp>
+            <latitude>45.217692</latitude>
+            <longitude>5.8076</longitude>
+        </adressegeographique>
+        <responsable fonction="dcr">
+            <personne gefid="pgros00D">
+                <nom>Gros</nom>
+                <prenom>Patrick</prenom>
+            </personne>
+        </responsable>
+        <responsable fonction="ds">
+            <personne gefid="stefa00C">
+                <nom>Stefani</nom>
+                <prenom>Jean-Bernard</prenom>
+            </personne>
+        </responsable>
+        <responsable fonction="da">
+            <personne gefid="amiel00E">
+                <nom>Cellier</nom>
+                <prenom>Muriel</prenom>
+            </personne>
+        </responsable>
+        <responsable fonction="vpcp">
+            <personne gefid="gorce00C">
+                <nom>Gorce</nom>
+                <prenom>Jean Marie</prenom>
+            </personne>
+        </responsable>
+    </cr>
+    <cr siid="CR0003O">
+        <numnatstructrep>200818245B</numnatstructrep>
+        <date_ouverture>01/01/2008</date_ouverture>
+        <date_fermeture/>
+        <sigle>LNE</sigle>
+        <libelle>CRI Lille - Nord Europe</libelle>
+        <idgef>10</idgef>
+        <adressegeographique siid="AD0005O">
+            <libelle>
+                <![CDATA[ CRI Lille ]]>
+            </libelle>
+            <cri siid="CR0003O">LNE</cri>
+            <ville>
+                <![CDATA[ Villeneuve d'Ascq ]]>
+            </ville>
+            <adresse>
+                <![CDATA[
+Parc Scientifique de la Haute Borne 40, avenue Halley Bât.A, Park Plaza
+]]>
+            </adresse>
+            <cp>
+                <![CDATA[ 59650 ]]>
+            </cp>
+            <latitude>50.605552</latitude>
+            <longitude>3.14805</longitude>
+        </adressegeographique>
+        <responsable fonction="dcr">
+            <personne gefid="herli00E">
+                <nom>Herlin</nom>
+                <prenom>Isabelle</prenom>
+            </personne>
+        </responsable>
+        <responsable fonction="ds">
+            <personne gefid="biern00C">
+                <nom>Biernacki</nom>
+                <prenom>Christophe</prenom>
+            </personne>
+        </responsable>
+        <responsable fonction="da">
+            <personne gefid="00001JFG">
+                <nom>Coudert</nom>
+                <prenom>Sylvie</prenom>
+            </personne>
+        </responsable>
+        <responsable fonction="vpcp">
+            <personne gefid="ppreu00A">
+                <nom>Preux</nom>
+                <prenom>Philippe</prenom>
+            </personne>
+        </responsable>
+    </cr>
+    <cr siid="CR0004Z">
+        <numnatstructrep>198618246Y</numnatstructrep>
+        <date_ouverture>01/01/1986</date_ouverture>
+        <date_fermeture/>
+        <sigle>NGE</sigle>
+        <libelle>CRI Nancy - Grand Est</libelle>
+        <idgef>5</idgef>
+        <adressegeographique siid="AD0006C">
+            <libelle>
+                <![CDATA[ CRI Nancy ]]>
+            </libelle>
+            <cri siid="CR0004Z">NGE</cri>
+            <ville>
+                <![CDATA[ Villers lès Nancy ]]>
+            </ville>
+            <adresse>
+                <![CDATA[ 615 Rue du Jardin Botanique ]]>
+            </adresse>
+            <cp>
+                <![CDATA[ 54600 ]]>
+            </cp>
+            <latitude>48.665482</latitude>
+            <longitude>6.157719</longitude>
+        </adressegeographique>
+        <responsable fonction="dcr">
+            <personne gefid="petit00B">
+                <nom>Petitjean</nom>
+                <prenom>Sylvain</prenom>
+            </personne>
+        </responsable>
+        <responsable fonction="ds">
+            <personne gefid="merzz00B">
+                <nom>Merz</nom>
+                <prenom>Stephan</prenom>
+            </personne>
+        </responsable>
+        <responsable fonction="da">
+            <personne gefid="diasz00B">
+                <nom>Dias</nom>
+                <prenom>Jocelyne</prenom>
+            </personne>
+        </responsable>
+        <responsable fonction="vpcp">
+            <personne gefid="evinc00D">
+                <nom>Vincent</nom>
+                <prenom>Emmanuel</prenom>
+            </personne>
+        </responsable>
+    </cr>
+    <cr siid="CR0005N">
+        <numnatstructrep>196718247G</numnatstructrep>
+        <date_ouverture>01/01/1967</date_ouverture>
+        <date_fermeture/>
+        <sigle>PRO</sigle>
+        <libelle>CRI de Paris</libelle>
+        <idgef>2</idgef>
+        <adressegeographique siid="AD0068P">
+            <libelle>
+                <![CDATA[ CRI Paris ]]>
+            </libelle>
+            <cri siid="CR0005N">PRO</cri>
+            <ville>
+                <![CDATA[ Paris ]]>
+            </ville>
+            <adresse>
+                <![CDATA[ 2, rue Simone Iff ]]>
+            </adresse>
+            <cp>
+                <![CDATA[ 75012 ]]>
+            </cp>
+            <latitude/>
+            <longitude/>
+        </adressegeographique>
+        <responsable fonction="dcr">
+            <personne gefid="simpl01A">
+                <nom>Ryl</nom>
+                <prenom>Isabelle</prenom>
+            </personne>
+        </responsable>
+        <responsable fonction="ds">
+            <personne gefid="cante00E">
+                <nom>Canteaut</nom>
+                <prenom>Anne</prenom>
+            </personne>
+        </responsable>
+        <responsable fonction="da">
+            <personne gefid="begis00E">
+                <nom>Begis</nom>
+                <prenom>Dominique</prenom>
+            </personne>
+        </responsable>
+        <responsable fonction="vpcp">
+            <personne gefid="mfern00E">
+                <nom>Fernandez Varela</nom>
+                <prenom>Miguel Angel</prenom>
+            </personne>
+        </responsable>
+    </cr>
+    <cr siid="CR0007B">
+        <numnatstructrep>198018249C</numnatstructrep>
+        <date_ouverture>01/01/1980</date_ouverture>
+        <date_fermeture/>
+        <sigle>RBA</sigle>
+        <libelle>CRI Rennes - Bretagne Atlantique</libelle>
+        <idgef>3</idgef>
+        <adressegeographique siid="AD0015R">
+            <libelle>
+                <![CDATA[ CRI Rennes ]]>
+            </libelle>
+            <cri siid="CR0007B">RBA</cri>
+            <ville>
+                <![CDATA[ Rennes ]]>
+            </ville>
+            <adresse>
+                <![CDATA[ Campus de Beaulieu 263, avenue du Général Leclerc ]]>
+            </adresse>
+            <cp>
+                <![CDATA[ 35042 ]]>
+            </cp>
+            <latitude>48.116528</latitude>
+            <longitude>-1.639473</longitude>
+        </adressegeographique>
+        <responsable fonction="dcr">
+            <personne gefid="ubeda00C">
+                <nom>Ubeda</nom>
+                <prenom>Stephane</prenom>
+            </personne>
+        </responsable>
+        <responsable fonction="ds">
+            <personne gefid="00003A2G">
+                <nom>Me</nom>
+                <prenom>Ludovic</prenom>
+            </personne>
+        </responsable>
+        <responsable fonction="da">
+            <personne gefid="raden00D">
+                <nom>Pierre-Radenac</nom>
+                <prenom>Catherine</prenom>
+            </personne>
+        </responsable>
+        <responsable fonction="vpcp">
+            <personne gefid="chart00D">
+                <nom>Chartier</nom>
+                <prenom>Philippe</prenom>
+            </personne>
+        </responsable>
+    </cr>
+    <cr siid="CR0008I">
+        <numnatstructrep>198318250R</numnatstructrep>
+        <date_ouverture>01/01/1983</date_ouverture>
+        <date_fermeture/>
+        <sigle>SAM</sigle>
+        <libelle>CRI Sophia Antipolis - Méditerranée</libelle>
+        <idgef>4</idgef>
+        <adressegeographique siid="AD0019Q">
+            <libelle>
+                <![CDATA[ CRI Sophia Antipolis ]]>
+            </libelle>
+            <cri siid="CR0008I">SAM</cri>
+            <ville>
+                <![CDATA[ Sophia Antipolis ]]>
+            </ville>
+            <adresse>
+                <![CDATA[ 2004, route des Lucioles ]]>
+            </adresse>
+            <cp>
+                <![CDATA[ 06902 ]]>
+            </cp>
+            <latitude>43.61619</latitude>
+            <longitude>7.06786</longitude>
+        </adressegeographique>
+        <responsable fonction="dcr">
+            <personne gefid="girau00F">
+                <nom>Giraudon</nom>
+                <prenom>Gerard</prenom>
+            </personne>
+        </responsable>
+        <responsable fonction="ds">
+            <personne gefid="mserr00F">
+                <nom>Serrano</nom>
+                <prenom>Manuel</prenom>
+            </personne>
+        </responsable>
+        <responsable fonction="da">
+            <personne gefid="serge00F">
+                <nom>Sergeant</nom>
+                <prenom>Guy</prenom>
+            </personne>
+        </responsable>
+        <responsable fonction="vpcp">
+            <personne gefid="mcler00F">
+                <nom>Clerc Gallagher</nom>
+                <prenom>Maureen</prenom>
+            </personne>
+        </responsable>
+    </cr>
+    <cr siid="CR0006Z">
+        <numnatstructrep>200818248E</numnatstructrep>
+        <date_ouverture>01/01/2008</date_ouverture>
+        <date_fermeture/>
+        <sigle>SIF</sigle>
+        <libelle>CRI Saclay - Île-de-France</libelle>
+        <idgef>11</idgef>
+        <adressegeographique siid="AD0012I">
+            <libelle>
+                <![CDATA[ CRI Saclay - Ile-de-France ]]>
+            </libelle>
+            <cri siid="CR0006Z">SIF</cri>
+            <ville>
+                <![CDATA[ Palaiseau ]]>
+            </ville>
+            <adresse>
+                <![CDATA[
+Bâtiment Alan Turing - 1 rue Honoré d'Estienne d'Orves - Campus de l'École Polytechnique
+]]>
+            </adresse>
+            <cp>
+                <![CDATA[ 91120 ]]>
+            </cp>
+            <latitude>48.730719</latitude>
+            <longitude>2.1743768</longitude>
+        </adressegeographique>
+        <responsable fonction="dcr">
+            <personne gefid="00004SPG">
+                <nom>Braunschweig</nom>
+                <prenom>Bertrand</prenom>
+            </personne>
+        </responsable>
+        <responsable fonction="ds">
+            <personne gefid="chape00E">
+                <nom>Chapelle</nom>
+                <prenom>Dominique</prenom>
+            </personne>
+        </responsable>
+        <responsable fonction="da">
+            <personne gefid="phhen00A">
+                <nom>Henry</nom>
+                <prenom>Philippe</prenom>
+            </personne>
+        </responsable>
+        <responsable fonction="vpcp">
+            <personne gefid="bthir00F">
+                <nom>Thirion</nom>
+                <prenom>Bertrand</prenom>
+            </personne>
+        </responsable>
+    </cr>
+</crs>

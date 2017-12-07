@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class MyCenter {
 
     /**
-     * // Replace Logic
+     * // TODO Replace Logic
      *
      * @return JSON that contains centers list
      */

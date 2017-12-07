@@ -1,5 +1,6 @@
 package unice.miage.xml.model;
 
+import javax.xml.bind.annotation.XmlAttribute;
 import java.io.Serializable;
 
 public class Center implements Serializable{
