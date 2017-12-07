@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jaxb:bindings xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" if-exists="true" version="2.1">
+  <!--
+
+Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
+Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
+Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
+Généré le : 2017.12.07 à 03:26:48 PM CET 
+
+  -->
+  <jaxb:bindings if-exists="true" scd="x-schema::">
+    <jaxb:schemaBindings map="false">
+      <jaxb:package name="org.inria.fr.ns.cr"/>
+    </jaxb:schemaBindings>
+    <jaxb:bindings if-exists="true" scd="crs">
+      <jaxb:class ref="org.inria.fr.ns.cr.Crs"/>
+    </jaxb:bindings>
+  </jaxb:bindings>
+</jaxb:bindings>
