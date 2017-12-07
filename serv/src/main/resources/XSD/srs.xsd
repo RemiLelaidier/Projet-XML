@@ -1,13 +1,19 @@
-This XML file does not appear to have any style information associated with it. The document tree is shown below.
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:bastri="http://ns.inria.fr/dsi/si/app/bastri" xmlns:resrc="http://ns.inria.fr/dsi/si/app/resources" targetNamespace="http://ns.inria.fr/dsi/si/app/bastri" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+<?xml version="1.0"?>
+<xs:schema targetNamespace="http://ns.inria.fr/dsi/si/app/bastri"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:bastri="http://ns.inria.fr/dsi/si/app/bastri"
+           xmlns:resrc="http://ns.inria.fr/dsi/si/app/resources"
+           version="1.0">
     <xs:element name="structureInrias">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="bastri:structureinria" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="bastri:structureinria"    minOccurs ="0" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    <xs:simpleType name="researchStructureCategory">
+    <xs:simpleType name ="researchStructureCategory">
         <xs:annotation>
             <xs:documentation xml:lang="en">
                 All the structure categories as defined in the BASTRI
@@ -21,7 +27,9 @@ This XML file does not appear to have any style information associated with it. 
     </xs:simpleType>
     <xs:element name="structureinria">
         <xs:annotation>
-            <xs:documentation xml:lang="fr">Définition d'une EPI</xs:documentation>
+            <xs:documentation xml:lang="fr">
+                Définition d'une EPI
+            </xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
@@ -36,63 +44,64 @@ This XML file does not appear to have any style information associated with it. 
                 <xs:element name="libelleen" type="xs:string" minOccurs="0"/>
                 <xs:element name="domaine" type="bastri:domaine" minOccurs="1" maxOccurs="2"/>
                 <xs:element name="theme" type="bastri:theme" minOccurs="1" maxOccurs="2"/>
+
                 <xs:element name="date_creation" type="xs:date" minOccurs="0"/>
                 <xs:element name="date_fermeture" type="xs:string" minOccurs="0"/>
-                <xs:element name="entite" type="bastri:entite" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element name="entite" type="bastri:entite" minOccurs="1" maxOccurs="unbounded" />
                 <xs:element name="idhal" type="xs:string" minOccurs="0"/>
-                <xs:element name="resume" type="bastri:resume" minOccurs="0" maxOccurs="2"/>
+                <xs:element name="resume" type="bastri:resume" minOccurs="0" maxOccurs="2" />
             </xs:sequence>
-            <xs:attribute name="siid" type="xs:string"/>
+            <xs:attribute name="siid" type="xs:string" />
             <xs:attribute name="numnatstruct" type="xs:string" use="optional"/>
         </xs:complexType>
     </xs:element>
-    <xs:complexType name="domaine">
+    <xs:complexType name ="domaine">
         <xs:simpleContent>
             <xs:extension base="xs:string">
                 <xs:attribute name="lang" type="xs:string"/>
                 <xs:attribute name="classification" type="xs:string"/>
-                <xs:attribute name="siid" type="xs:string"/>
+                <xs:attribute name="siid" type="xs:string" />
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
-    <xs:complexType name="urlTeam">
+    <xs:complexType name ="urlTeam">
         <xs:simpleContent>
             <xs:extension base="xs:string">
                 <xs:attribute name="lang" type="xs:string"/>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
-    <xs:complexType name="keywords">
+    <xs:complexType name ="keywords">
         <xs:simpleContent>
             <xs:extension base="xs:string">
                 <xs:attribute name="lang" type="xs:string"/>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
-    <xs:complexType name="theme">
+    <xs:complexType name ="theme">
         <xs:simpleContent>
             <xs:extension base="xs:string">
                 <xs:attribute name="lang" type="xs:string"/>
                 <xs:attribute name="refid" type="xs:string"/>
-                <xs:attribute name="siid" type="xs:string"/>
+                <xs:attribute name="siid" type="xs:string" />
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
-    <xs:complexType name="resume">
+    <xs:complexType name ="resume">
         <xs:simpleContent>
             <xs:extension base="xs:string">
                 <xs:attribute name="lang" type="xs:string"/>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
-    <xs:complexType name="corps">
+    <xs:complexType name ="corps">
         <xs:simpleContent>
             <xs:extension base="xs:string">
                 <xs:attribute name="abbr" type="xs:string"/>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
-    <xs:complexType name="cri">
+    <xs:complexType name ="cri">
         <xs:simpleContent>
             <xs:extension base="xs:string">
                 <xs:attribute name="siid" type="xs:string"/>
@@ -105,51 +114,50 @@ This XML file does not appear to have any style information associated with it. 
             <xs:element name="personne" type="bastri:personne"/>
             <xs:element name="adressegeographique" type="bastri:adressegeographique"/>
             <xs:element name="hebergeur" type="xs:string"/>
-            <xs:element name="typeentite" type="xs:string"/>
+            <xs:element name="typeentite"  type="xs:string" />
             <xs:element name="commentaire" type="xs:string"/>
             <xs:element name="lien_structure_exterieure" type="bastri:lien_structure_exterieure" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
         <xs:attribute name="principal" type="xs:string"/>
         <xs:attribute name="codestructure" type="xs:string"/>
-        <xs:attribute name="siid" type="xs:string"/>
+        <xs:attribute name="siid" type="xs:string" />
     </xs:complexType>
     <xs:complexType name="personne">
         <xs:sequence>
-            <xs:element name="nom" type="xs:string" minOccurs="0"/>
-            <xs:element name="prenom" type="xs:string" minOccurs="0"/>
-            <xs:element name="genre" type="xs:string" minOccurs="0"/>
-            <xs:element name="date_naissance" type="xs:string" minOccurs="0"/>
-            <xs:element name="corps" type="bastri:corps" minOccurs="0"/>
+            <xs:element name="nom" type="xs:string" minOccurs="0" />
+            <xs:element name="prenom" type="xs:string" minOccurs="0" />
+            <xs:element name="genre" type="xs:string" minOccurs="0" />
+            <xs:element name="date_naissance" type="xs:string" minOccurs="0" />
+            <xs:element name="corps" type="bastri:corps" minOccurs="0" />
+
         </xs:sequence>
-        <!--   <xs:attribute name="version" type="xs:string"/>    -->
+        <!--  <xs:attribute name="version" type="xs:string"/>   -->
         <xs:attribute name="gefid" type="xs:string"/>
     </xs:complexType>
     <xs:complexType name="adressegeographique">
         <xs:sequence>
-            <xs:element name="libelle" type="xs:string" minOccurs="0"/>
-            <xs:element name="cri" type="bastri:cri" minOccurs="0"/>
-            <xs:element name="ville" type="xs:string" minOccurs="0"/>
-            <xs:element name="adresse" type="xs:string" minOccurs="0"/>
-            <xs:element name="cp" type="xs:string" minOccurs="0"/>
-            <xs:element name="latitude" type="xs:string" minOccurs="0"/>
-            <xs:element name="longitude" type="xs:string" minOccurs="0"/>
+            <xs:element name="libelle" type="xs:string" minOccurs="0" />
+            <xs:element name="cri" type="bastri:cri" minOccurs="0" />
+            <xs:element name="ville" type="xs:string" minOccurs="0"  />
+            <xs:element name="adresse" type="xs:string" minOccurs="0"  />
+            <xs:element name="cp" type="xs:string" minOccurs="0" />
+            <xs:element name="latitude" type="xs:string" minOccurs="0"  />
+            <xs:element name="longitude" type="xs:string" minOccurs="0" />
         </xs:sequence>
-        <xs:attribute name="siid" type="xs:string"/>
+        <xs:attribute name="siid" type="xs:string" />
         <xs:attribute name="refid" type="xs:string"/>
         <xs:attribute name="url" type="xs:string"/>
         <xs:attribute name="version" type="xs:string"/>
     </xs:complexType>
     <!--
-
-      <xs:complexType name="hebergeur">
-        <xs:sequence>
-          <xs:element name="libelle" type="xs:string"/>
-        </xs:sequence>
-        <xs:attribute name="version" type="xs:string"/>
-      </xs:complexType>
-    -->
+    <xs:complexType name="hebergeur">
+      <xs:sequence>
+        <xs:element name="libelle" type="xs:string"/>
+      </xs:sequence>
+      <xs:attribute name="version" type="xs:string"/>
+    </xs:complexType>
+  -->
     <!--
-
       <xs:complexType name="typeentite">
         <xs:sequence>
           <xs:element name="libelle" type="xs:string"/>
@@ -180,7 +188,8 @@ This XML file does not appear to have any style information associated with it. 
         <xs:sequence>
             <xs:element name="numero" type="xs:string"/>
             <xs:element name="directeur" type="bastri:directeur"/>
-            <xs:element name="composition" type="bastri:composition" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="composition" type="bastri:composition" minOccurs="0" maxOccurs="unbounded" />
+
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="directeur">
@@ -189,7 +198,7 @@ This XML file does not appear to have any style information associated with it. 
             <xs:element name="prenom" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
-    <xs:complexType name="composition">
+    <xs:complexType name ="composition">
         <xs:simpleContent>
             <xs:extension base="xs:string">
                 <xs:attribute name="refid" type="xs:string"/>
