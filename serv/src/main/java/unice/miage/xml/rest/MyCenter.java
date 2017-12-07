@@ -12,17 +12,16 @@ import java.util.ArrayList;
 /**
  * Root resource (exposed at "myresource" path)
  */
-@Path("centers")
+@Path("/centers")
 public class MyCenter {
 
     /**
-     * Method handling HTTP GET requests. The returned object will be sent
-     * to the client as "text/plain" media type.
+     * // Replace Logic
      *
-     * @return String that will be returned as a text/plain response.
+     * @return JSON that contains centers list
      */
     @GET
-    @Path("list")
+    @Path("/list")
     @Produces(MediaType.APPLICATION_JSON)
     public ArrayList<Center> getCenterList() {
         ArrayList<Center> centers = new ArrayList<Center>();
