@@ -9,6 +9,19 @@
     <version>1.0-SNAPSHOT</version>
     <name>serv</name>
 
+    <repositories>
+        <repository>
+            <id>basex</id>
+            <name>BaseX Maven Repository</name>
+            <url>http://files.basex.org/maven</url>
+        </repository>
+        <repository>
+            <id>xqj</id>
+            <name>XQJ Maven Repository</name>
+            <url>http://xqj.net/maven</url>
+        </repository>
+    </repositories>
+
     <build>
         <finalName>serv</finalName>
         <plugins>
@@ -89,8 +102,6 @@
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-servlet-core</artifactId>
             <version>2.26</version>
-            <!-- use the following artifactId if you don't need servlet 2.x compatibility -->
-            <!-- artifactId>jersey-container-servlet</artifactId -->
         </dependency>
         <dependency>
             <groupId>org.glassfish.jersey.inject</groupId>
@@ -107,6 +118,32 @@
             <artifactId>jaxb-api</artifactId>
             <version>2.3.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.basex</groupId>
+            <artifactId>basex</artifactId>
+            <version>7.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.basex</groupId>
+            <artifactId>basex-api</artifactId>
+            <version>7.6</version>
+        </dependency>
+        <dependency>
+            <groupId>net.xqj</groupId>
+            <artifactId>basex-xqj</artifactId>
+            <version>1.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.xqj2</groupId>
+            <artifactId>xqj2</artifactId>
+            <version>0.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.xml.xquery</groupId>
+            <artifactId>xqj-api</artifactId>
+            <version>1.0</version>
+        </dependency>
+
         <!-- uncomment this to get JSON support
         <dependency>
             <groupId>org.glassfish.jersey.media</groupId>
