@@ -21,8 +21,8 @@ public class XQueryBuilder {
      * @return
      */
     public ArrayList getAllCenters(){
-        String query = "for $x at $i in doc('" + this.crsFile + "')/crs/cr " +
-                "return data($x)";
+        String query = "for $x in doc('" + this.crsFile + "')//crs " +
+                "return $x";
         ArrayList result = this.database.iterate(query);
         return result;
     }

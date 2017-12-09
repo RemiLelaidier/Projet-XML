@@ -28,6 +28,7 @@ public class MyCenter {
     public ArrayList getCenterList() {
 
         XQueryBuilder xQueryBuilder = new XQueryBuilder();
-        return xQueryBuilder.getAllCenters();
+        ArrayList result = xQueryBuilder.getAllCenters();
+        return result;
     }
 }

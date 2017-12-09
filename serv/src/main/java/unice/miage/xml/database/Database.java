@@ -2,13 +2,20 @@ package unice.miage.xml.database;
 
 import org.basex.core.*;
 import org.basex.core.cmd.XQuery;
+import org.basex.io.serial.Serializer;
 import org.basex.query.QueryException;
 import org.basex.query.QueryProcessor;
 import org.basex.query.iter.Iter;
 import org.basex.query.value.item.Item;
 import org.inria.fr.ns.cr.*;
-import org.inria.fr.ns.sr.*;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Database {
@@ -34,26 +41,39 @@ public class Database {
     }
 
     /**
-     * Iterate
-     * @param query
-     * @return
+     * Execute the query given in params then convert result in classType
+     * TODO generify
+     * @param query String
+     * @param classType String
+     * @return ArrayList
      */
-    public ArrayList iterate(String query){
-        ArrayList result = new ArrayList();
+    public ArrayList<Crs> iterate(String query, String classType){
         try {
+            // Create JAXB context
+            ArrayList<Crs> result = new ArrayList<>();
+            // TODO detect classType
+            JAXBContext jaxbContext = JAXBContext.newInstance(Crs.class);
+            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+            // Create XQuery context
             QueryProcessor proc = new QueryProcessor(query, context);
-            // Store the pointer to the result in an iterator:
             Iter iter = proc.iter();
-
-            // Iterate through all items and serialize
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            Serializer ser = proc.getSerializer(baos);
+            proc.close();
+            // Iterate on the result
             for(Item item; (item = iter.next()) != null;) {
-                result.add(item.toJava());
-                System.out.println(item);
+                baos.reset();
+                ser.serialize(item);
+                // Create the model and add it to result
+                Crs crs = (Crs) unmarshaller.unmarshal(new ByteArrayInputStream(baos.toByteArray()));
+                result.add(crs);
             }
-        }catch (QueryException e){
+            return result;
+
+        }catch (QueryException | IOException | JAXBException e){
             e.printStackTrace();
         }
-        return result;
+        return null;
     }
 
 
