@@ -10,6 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/google-map/google-map.html">
+<link rel="import" href="../bower_components/google-map/google-map-marker.html">
 
 <link rel="import" href="mi-rpc.html">
 <link rel="import" href="mi-helper.html">
@@ -107,6 +108,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       // Action on RPC Error
       _onRpcError(event){
+        debugger;
         this.helper.showToast("Impossible de récupérer les infos depuis le serveur");
         console.log(event);
       }
@@ -114,8 +116,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       // Action on RPC Response
       _onRpcResponse(event){
         this.helper.showToast("Informations reçues depuis le serveur");
-        // TODO Create markers and add it to the map
-        console.log(event);
+        const response = event.detail.data.response;
+        // Create markers and add it to the map
+        const crs = response[0].cr;
+        let i = 0;
+        while(i < crs.length){
+          this._addMarker(crs[i].adressegeographique);
+          i++;
+        }
+      }
+
+      // Add marker on the map
+      _addMarker(data){
+        let marker = document.createElement('google-map-marker');
+        marker.latitude = data.latitude;
+        marker.longitude = data.longitude;
+        marker.title = data.libelle;
+        this.map.appendChild(marker);
+        this.helper.showToast("Centre "+ data.libelle +" ajouté");
       }
     }
 
