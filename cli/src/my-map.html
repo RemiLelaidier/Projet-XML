@@ -12,6 +12,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/google-map/google-map.html">
 
 <link rel="import" href="mi-rpc.html">
+<link rel="import" href="mi-helper.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="my-map">
@@ -34,6 +35,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <p>Les centres de recherches de l'INRIA sont trouvables ici<p>
       <google-map id="map" api-key="AIzaSyBoFJIoqc8uOyt9Tui2MohrLxIgbrXsHl0"></google-map>
     </div>
+    <mi-helper id="helper"></mi-helper>
+    <mi-rpc id="rpc"></mi-rpc>
   </template>
 
   <script>
@@ -57,9 +60,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             type: Number,
             value: 18
           },
-          _shadowRoot: {
-            type: Object
-          }
+          routeUrl: {
+            type: String,
+            value: "centers/list"
+          },
+          helper: Object,
+          rpc: Object,
+          map: Object,
+          _shadowRoot: Object
         };
       }
 
@@ -85,11 +93,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        */
       ready() {
         super.ready();
+        // Get utilities
+        this.helper = this.shadowRoot.getElementById('helper');
+        this.rpc = this.shadowRoot.getElementById('rpc');
         // Configure map
-        let map = this.shadowRoot.getElementById("map");
-        map.latitude = this.defLat;
-        map.longitude = this.defLon;
-        map.zoom = this.defZoom;
+        this.map = this.shadowRoot.getElementById('map');
+        this.map.latitude = this.defLat;
+        this.map.longitude = this.defLon;
+        this.map.zoom = this.defZoom;
+        // Launch Ajax call for getting the centers list
+        this.rpc.sendData(this.routeUrl, "GET");
       }
 
       // Action on RPC Error

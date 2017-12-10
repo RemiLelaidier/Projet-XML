@@ -1,0 +1,119 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-spinner/paper-spinner-lite.html">
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
+
+<script>
+/**
+* Generic helper for **UI** elements
+*/
+class MiHelper extends Polymer.Element {
+
+  static get properties(){
+    return {
+      toast: Object,
+      dialog: Object,
+      loadingLoaded: Boolean
+    }
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+  }
+
+  ready() {
+    super.ready();
+  }
+
+/**
+  * @function showToast
+  * @param text : string
+  *
+  * Create + append a paper-toast on the fly
+  * Populate text attribute
+  *
+  * @return void
+  */
+  showToast(text){
+    if(!this.toast) {
+      this.toast = document.createElement('paper-toast');
+      document.body.appendChild(this.toast);
+    }
+
+    this.toast.text = text;
+    this.toast.open();
+  }
+
+  toggleLoading(){
+    if(this.dialog && this.loadingLoaded){
+      this.dialog.toggle();
+    } else {
+      this._doCreateLoading();
+      this.dialog.open();
+    }
+  }
+
+  _doCreateLoading(){
+    this.dialog = document.createElement('paper-dialog');
+    this.dialog.modal = true;
+    const title = document.createElement('h2');
+    title.innerHTML = "Chargement en cours";
+    const spinner = document.createElement('paper-spinner-lite');
+    spinner.active = true;
+    spinner.className = "thin";
+    this.dialog.appendChild(title);
+    this.dialog.appendChild(spinner);
+    this.dialog.id = "loading";
+    document.body.appendChild(this.dialog);
+    this.loadingLoaded = true;
+  }
+
+/**
+  * @function createDialog
+  *
+  * @param title : string
+  * @param content : string
+  * @param actions : PaperButton[]
+  *
+  * Create a simple paper dialog (useful for alerts)
+  * Event listeners needs to be set before and passed as an array containing every paper-button node
+  *
+  * @return PaperDialog dialog
+  */
+  createDialog(title, content, actions){
+    let titleElem, contentElem;
+    let actionsHolder = document.createElement('div');
+    actionsHolder.className = "buttons";
+
+    // Create a new <paper-dialog>
+    this.dialog = document.createElement('paper-dialog');
+    this.dialog.id = "dialog-alert";
+
+    // Defining title, content..
+    titleElem = document.createElement('h2');
+    titleElem.className = 'dialogTitle';
+
+    contentElem = document.createElement('p');
+    contentElem.className = 'dialogContent';
+
+    // Append cause we want to have it displayed
+    this.dialog.appendChild(titleElem);
+    this.dialog.appendChild(contentElem);
+
+    // iterate through actions, and append as paperDialogActions
+    actions.map((action) => {
+      actionsHolder.appendChild(action);
+    });
+
+    // append our new actions
+    this.dialog.appendChild(actionsHolder);
+
+    // Replace title, content
+    titleElem.innerHTML = title;
+    contentElem.innerHTML = content;
+
+    return this.dialog;
+  }
+}
+
+customElements.define('mi-helper', MiHelper);
+</script>

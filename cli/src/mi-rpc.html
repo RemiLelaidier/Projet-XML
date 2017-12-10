@@ -16,13 +16,15 @@ class MiRpc extends Polymer.Element {
           notify: true
       },
       ironAjax: Object,
-      serverPath: String
+      serverPath: {
+        type: String,
+        value: "127.0.0.1:8080/serv/api/"
+      }
     }
   }
 
   ready() {
     super.ready();
-    this.serverPath = window.Polymer.serverPath;
     if(!this.ironAjax){
         this.ironAjax = document.createElement('iron-ajax');
         this.ironAjax.id = "miRPC";
@@ -76,7 +78,7 @@ class MiRpc extends Polymer.Element {
   _dispatchResponse(data){
     return new Promise((resolve, reject) => {
       const event = new CustomEvent('rpcResponse', {detail: {data:data.detail, route: this._getApiRoute(data.detail.url)}, bubbles: true});
-      
+
       // Bubbling ? -> https://www.sitepoint.com/event-bubbling-javascript/
       this.dispatchEvent(event);
       resolve();
