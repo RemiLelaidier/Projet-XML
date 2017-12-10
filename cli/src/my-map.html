@@ -122,7 +122,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         const crs = response[0].cr;
         let i = 0;
         while(i < crs.length){
-          this._addMarker(crs[i].adressegeographique);
+          this._addMarker(crs[i]);
           i++;
         }
       }
@@ -130,22 +130,61 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       // Add marker on the map
       _addMarker(data){
         let marker = document.createElement('google-map-marker');
-        marker.latitude = data.latitude;
-        marker.longitude = data.longitude;
-        marker.title = data.libelle;
+        let address = data.adressegeographique;
+        // Place the marker
+        marker.latitude = address.latitude;
+        marker.longitude = address.longitude;
+        marker.title = address.libelle;
+        // Create info windoow
         marker.appendChild(this._createInfo(data));
+        // Listen for opening infoWindow
         marker.clickEvents = true;
         marker.addEventListener('google-map-marker-click', function(event){
           let marker = event.target;
           marker.open = true;
         });
+        // Add the marker to the map
         this.map.appendChild(marker);
       }
 
+      // Create infoWindow for a marker
       _createInfo(data){
-        let element = document.createElement('h2');
-        element.innerHTML = 'Salut';
-        return element;
+        const responsables = data.responsable;
+        // Create container
+        let div = document.createElement('div');
+        // Create title
+        let titre1 = document.createElement('h4');
+        titre1.innerHTML = 'Informations sur le centre';
+        div.appendChild(titre1);
+        // Create body
+        let body = document.createElement('ul');
+        let sigle = document.createElement('li');
+        let siid = document.createElement('li');
+        let libelle = document.createElement('li');
+        sigle.innerHTML = "Sigle : "+ data.sigle;
+        siid.innerHTML = "Siid : "+ data.siid;
+        libelle.innerHTML = "Nom : "+ data.libelle;
+        body.appendChild(sigle);
+        body.appendChild(siid);
+        body.appendChild(libelle);
+        div.appendChild(body);
+        // Create responsables
+        let titre2 = document.createElement('h4');
+        titre2.innerHTML = 'Responsables'
+        div.appendChild(titre2);
+        let resps = document.createElement('ul');
+        let i = 0;
+        while (i < responsables.length) {
+          let resp = document.createElement('li')
+          resp.innerHTML = "<b>Responsable "+ i +" :</b><br>"
+            + "Nom : " + responsables[i].personne.nom + "<br>"
+            + "Prénom : " + responsables[i].personne.prenom + "<br>"
+            + "Fonction : " + responsables[i].fonction;
+          resps.appendChild(resp);
+          i++;
+        }
+        div.appendChild(resps);
+        return div;
       }
     }
 
