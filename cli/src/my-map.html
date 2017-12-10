@@ -107,11 +107,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       // Action on RPC Error
       _onRpcError(event){
+        this.helper.showToast("Impossible de récupérer les infos depuis le serveur");
         console.log(event);
       }
 
       // Action on RPC Response
       _onRpcResponse(event){
+        this.helper.showToast("Informations reçues depuis le serveur");
+        // TODO Create markers and add it to the map
         console.log(event);
       }
     }
