@@ -51,15 +51,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         return {
           defLat: {
             type: String,
-            value: "43.615817"
+            value: "46.508689"
           },
           defLon: {
             type: String,
-            value: "7.0661913"
+            value: "2.6393036"
           },
           defZoom: {
             type: Number,
-            value: 18
+            value: 5
           },
           routeUrl: {
             type: String,
@@ -133,7 +133,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         marker.longitude = data.longitude;
         marker.title = data.libelle;
         this.map.appendChild(marker);
-        this.helper.showToast("Centre "+ data.libelle +" ajouté");
       }
     }
 
