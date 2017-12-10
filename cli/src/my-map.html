@@ -11,6 +11,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/google-map/google-map.html">
 <link rel="import" href="../bower_components/google-map/google-map-marker.html">
+<link rel="import" href="../bower_components/google-apis/google-maps-api.html">
 
 <link rel="import" href="mi-rpc.html">
 <link rel="import" href="mi-helper.html">
@@ -132,6 +133,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         marker.latitude = data.latitude;
         marker.longitude = data.longitude;
         marker.title = data.libelle;
+        marker.info = new google.maps.InfoWindow({
+          content: "Salut"
+        });
+        marker.clickEvents = true;
+        marker.addEventListener('google-map-marker-click', function(marker){
+          console.log('clicked');
+        });
         this.map.appendChild(marker);
       }
     }
