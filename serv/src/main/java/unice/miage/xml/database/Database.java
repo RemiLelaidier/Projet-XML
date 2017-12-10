@@ -40,6 +40,10 @@ public class Database {
         return result;
     }
 
+    public ArrayList<Crs> iterate(String query){
+      return iterate(query, "");
+    }
+
     /**
      * Execute the query given in params then convert result in classType
      * TODO generify
