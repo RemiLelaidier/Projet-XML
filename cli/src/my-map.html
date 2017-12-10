@@ -133,14 +133,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         marker.latitude = data.latitude;
         marker.longitude = data.longitude;
         marker.title = data.libelle;
-        marker.info = new google.maps.InfoWindow({
-          content: "Salut"
-        });
+        marker.appendChild(this._createInfo(data));
         marker.clickEvents = true;
-        marker.addEventListener('google-map-marker-click', function(marker){
-          console.log('clicked');
+        marker.addEventListener('google-map-marker-click', function(event){
+          let marker = event.target;
+          marker.open = true;
         });
         this.map.appendChild(marker);
+      }
+
+      _createInfo(data){
+        let element = document.createElement('h2');
+        element.innerHTML = 'Salut';
+        return element;
       }
     }
 
