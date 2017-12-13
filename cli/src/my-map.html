@@ -180,9 +180,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         const titre2 = document.createElement('h4');
         titre2.innerHTML = 'Responsables'
         div.appendChild(titre2);
-
-        div.appendChild(this._createRespTabs(responsables.length));
-        //div.appendChild(this._createRespView(responsables));
+        const tabs = this._createRespTabs(responsables.length);
+        const views = this._createRespView(responsables);
+        // Listen for tabs change
+        tabs.addEventListener('selected-item-changed', function(event) {
+          debugger;
+          console.log(tabs.selected);
+          views.setAttribute('selected', tabs.selected);
+        });
+        // Add Tabs system to info windows
+        div.appendChild(tabs);
+        div.appendChild(views);
         return div;
       }
 
@@ -193,12 +201,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         while (i < length) {
           const tab = document.createElement('paper-tab');
           tab.setAttribute('link', "");
-          const a = document.createElement('a');
-          a.href = "#resp" + i;
-          a.className = "link";
-          a.tabIndex = -1;
-          a.innerHTML = "<b>Responsable "+ i +"</b>";
-          tab.appendChild(a);
+          tab.style.padding = '10px';
+          tab.innerHTML = "<b>Responsable "+ i +"</b>";
           tabs.appendChild(tab);
           i++;
         }
@@ -207,7 +211,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       // Create responsables view for tabs
       _createRespView(resps){
-
+        console.log(resps);
+        const tabViews = document.createElement('iron-pages');
+        tabViews.setAttribute('selected', "0");
+        let i = 0;
+        while (i < resps.length) {
+          const div = document.createElement('div');
+          div.id = "resp" + i;
+          const ul = document.createElement('ul');
+          const li = document.createElement('li');
+          li.innerHTML = "Test " + i;
+          ul.appendChild(li);
+          div.appendChild(ul);
+          tabViews.appendChild(div);
+          i++;
+        }
+        return tabViews;
       }
     }
 
