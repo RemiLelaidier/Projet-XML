@@ -23,7 +23,7 @@ public class XQueryBuilder {
     public ArrayList getAllCenters(){
         String query = "for $x in doc('" + this.crsFile + "')//crs " +
                 "return $x";
-        ArrayList result = this.database.iterate(query);
+        ArrayList result = this.database.iterate(query, "org.inria.fr.ns.cr.Crs");
         return result;
     }
 }

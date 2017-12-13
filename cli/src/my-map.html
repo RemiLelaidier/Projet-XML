@@ -12,6 +12,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/google-map/google-map.html">
 <link rel="import" href="../bower_components/google-map/google-map-marker.html">
 <link rel="import" href="../bower_components/google-apis/google-maps-api.html">
+<link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../bower_components/paper-tabs/paper-tab.html">
+
 
 <link rel="import" href="mi-rpc.html">
 <link rel="import" href="mi-helper.html">
@@ -29,6 +32,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         height: 600px;
         width: auto;
         margin: 10px auto;
+      }
+      .link {
+        @apply --layout-horizontal;
+        @apply --layout-center-center;
+        padding: 10px;
       }
     </style>
 
@@ -129,8 +137,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       // Add marker on the map
       _addMarker(data){
-        let marker = document.createElement('google-map-marker');
-        let address = data.adressegeographique;
+        const marker = document.createElement('google-map-marker');
+        const address = data.adressegeographique;
         // Place the marker
         marker.latitude = address.latitude;
         marker.longitude = address.longitude;
@@ -140,8 +148,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         // Listen for opening infoWindow
         marker.clickEvents = true;
         marker.addEventListener('google-map-marker-click', function(event){
-          let marker = event.target;
-          marker.open = true;
+          let currentMarker = event.target;
+          currentMarker.open = true;
         });
         // Add the marker to the map
         this.map.appendChild(marker);
@@ -151,16 +159,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       _createInfo(data){
         const responsables = data.responsable;
         // Create container
-        let div = document.createElement('div');
+        const div = document.createElement('div');
         // Create title
-        let titre1 = document.createElement('h4');
+        const titre1 = document.createElement('h4');
         titre1.innerHTML = 'Informations sur le centre';
         div.appendChild(titre1);
         // Create body
-        let body = document.createElement('ul');
-        let sigle = document.createElement('li');
-        let siid = document.createElement('li');
-        let libelle = document.createElement('li');
+        const body = document.createElement('ul');
+        const sigle = document.createElement('li');
+        const siid = document.createElement('li');
+        const libelle = document.createElement('li');
         sigle.innerHTML = "Sigle : "+ data.sigle;
         siid.innerHTML = "Siid : "+ data.siid;
         libelle.innerHTML = "Nom : "+ data.libelle;
@@ -169,22 +177,37 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         body.appendChild(libelle);
         div.appendChild(body);
         // Create responsables
-        let titre2 = document.createElement('h4');
+        const titre2 = document.createElement('h4');
         titre2.innerHTML = 'Responsables'
         div.appendChild(titre2);
-        let resps = document.createElement('ul');
+
+        div.appendChild(this._createRespTabs(responsables.length));
+        //div.appendChild(this._createRespView(responsables));
+        return div;
+      }
+
+      // Create tabs for responsables
+      _createRespTabs(length){
+        const tabs = document.createElement('paper-tabs');
         let i = 0;
-        while (i < responsables.length) {
-          let resp = document.createElement('li')
-          resp.innerHTML = "<b>Responsable "+ i +" :</b><br>"
-            + "Nom : " + responsables[i].personne.nom + "<br>"
-            + "Prénom : " + responsables[i].personne.prenom + "<br>"
-            + "Fonction : " + responsables[i].fonction;
-          resps.appendChild(resp);
+        while (i < length) {
+          const tab = document.createElement('paper-tab');
+          tab.setAttribute('link', "");
+          const a = document.createElement('a');
+          a.href = "#resp" + i;
+          a.className = "link";
+          a.tabIndex = -1;
+          a.innerHTML = "<b>Responsable "+ i +"</b>";
+          tab.appendChild(a);
+          tabs.appendChild(tab);
           i++;
         }
-        div.appendChild(resps);
-        return div;
+        return tabs;
+      }
+
+      // Create responsables view for tabs
+      _createRespView(resps){
+
       }
     }
 

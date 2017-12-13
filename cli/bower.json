@@ -21,7 +21,8 @@
     "web-animations-js": "^2.3.1",
     "paper-spinner": "^2.0.0",
     "paper-toast": "PolymerElements/paper-toast#^2.0.0",
-    "google-apis": "GoogleWebComponents/google-apis#^2.0.0"
+    "google-apis": "GoogleWebComponents/google-apis#^2.0.0",
+    "paper-tabs": "PolymerElements/paper-tabs#^2.0.0"
   },
   "resolutions": {
     "polymer": "^2.0.0"

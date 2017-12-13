@@ -21,9 +21,7 @@ import java.util.ArrayList;
 public class Database {
     static Context context = new Context();
 
-    public Database(){
-
-    }
+    public Database(){}
 
     /**
      * Execute the query and send the result
@@ -48,15 +46,14 @@ public class Database {
      * Execute the query given in params then convert result in classType
      * TODO generify
      * @param query String
-     * @param classType String
+     * @param classType String must be fully-qualified
      * @return ArrayList
      */
     public ArrayList<Crs> iterate(String query, String classType){
         try {
-            // Create JAXB context
+            // Create JAXB context and populate the chosen model
             ArrayList<Crs> result = new ArrayList<>();
-            // TODO detect classType
-            JAXBContext jaxbContext = JAXBContext.newInstance(Crs.class);
+            JAXBContext jaxbContext = JAXBContext.newInstance(Class.forName(classType));
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
             // Create XQuery context
             QueryProcessor proc = new QueryProcessor(query, context);
@@ -74,7 +71,7 @@ public class Database {
             }
             return result;
 
-        }catch (QueryException | IOException | JAXBException e){
+        }catch (QueryException | IOException | JAXBException | ClassNotFoundException e){
             e.printStackTrace();
         }
         return null;
