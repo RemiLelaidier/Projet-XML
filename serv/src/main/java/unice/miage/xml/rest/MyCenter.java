@@ -20,7 +20,7 @@ public class MyCenter {
     /**
      * Return all researchs centers
      *
-     * @return JSON that contains centers list
+     * @return JSON
      */
     @GET
     @Path("/list")
@@ -36,7 +36,7 @@ public class MyCenter {
      *
      * TODO : Replace logic
      *
-     * @return
+     * @return JSON
      */
     @GET
     @Path("/{id}")
