@@ -9,7 +9,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../bower_components/highcharts-chart/highcharts-chart.html">
+<link rel="import" href="../bower_components/google-chart/google-chart.html">
 <link rel="import" href="../bower_components/the-grid/the-grid.html">
 
 <link rel="import" href="shared-styles.html">
@@ -31,24 +31,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <h1>Statistiques</h1>
       <the-grid col-count="12" row-count="10" cell-margin="10">
         <div class="tile" col="0" row="0" height="2" width="5">
-          <highcharts-chart
-            id="chart1"
-            type="spline"
-            title='Test-Spline Chart'
-            x-zoom
-            x-label="Iterations"
-            y-label="Awesomeness Index">
-          </highcharts-chart>
+            <google-chart
+              class="card"
+              type='pie'
+              options='{"title": "NB de personnes par centre"}'
+              cols='[{"label":"Centre", "type":"string"}, {"label":"NB Personne", "type":"number"}]'
+              rows='[["Paris", 100],["Rouen", 36],["Perpignan", 52],["Grenoble", 21]]'>
+            </google-chart>
         </div>
         <div class="tile" col="6" row="0" height="2" width="5">
-          <highcharts-chart
+          <!--<google-chart
             id="chart2"
             type="column"
             title="Nombre de d'équipes par centres"
             x-zoom
             x-label="Centre"
             y-label="Nombre d'équipes">
-          </highcharts-chart>
+          </google-chart>-->
         </div>
       </the-grid>
     </div>
@@ -88,7 +87,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this.chart1 = this.shadowRoot.getElementById('chart1');
         this.chart2 = this.shadowRoot.getElementById('chart2');
         this.chart1.data = [[0,0],[1,7],[2,1],[3,6],[4,8],[5,6]];
-        this.chart2.data = [['Sophia', 0],["Paris",7],["Rouen",1],["Versailles",6],["Calais",8],["Perpignan",6]];
+        this.chart2.data = [["Sophia", 0],["Paris",7],["Rouen",1],["Versailles",6],["Calais",8],["Perpignan",6]];
       }
 
       _onRpcError(event){

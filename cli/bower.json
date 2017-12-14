@@ -23,8 +23,8 @@
     "paper-toast": "PolymerElements/paper-toast#^2.0.0",
     "google-apis": "GoogleWebComponents/google-apis#^2.0.0",
     "paper-tabs": "PolymerElements/paper-tabs#^2.0.0",
-    "highcharts-chart": "avdaredevil/highcharts-chart#^2.0.1",
-    "the-grid": "vpusher/the-grid#^1.4.0"
+    "the-grid": "vpusher/the-grid#^1.4.0",
+    "google-chart": "GoogleWebComponents/google-chart#^2.0.0"
   },
   "resolutions": {
     "polymer": "^2.0.0"
