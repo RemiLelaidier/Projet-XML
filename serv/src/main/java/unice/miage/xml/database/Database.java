@@ -49,10 +49,10 @@ public class Database {
      * @param classType String must be fully-qualified
      * @return ArrayList
      */
-    public ArrayList<Crs> iterate(String query, String classType){
+    public ArrayList iterate(String query, String classType){
         try {
             // Create JAXB context and populate the chosen model
-            ArrayList<Crs> result = new ArrayList<>();
+            ArrayList result = new ArrayList<>();
             JAXBContext jaxbContext = JAXBContext.newInstance(Class.forName(classType));
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
             // Create XQuery context

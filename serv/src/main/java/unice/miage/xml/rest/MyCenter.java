@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class MyCenter {
 
     /**
-     * // TODO Replace Logic
+     * Return all researchs centers
      *
      * @return JSON that contains centers list
      */
@@ -26,9 +26,22 @@ public class MyCenter {
     @Path("/list")
     @Produces(MediaType.APPLICATION_JSON)
     public ArrayList getCenterList() {
-
         XQueryBuilder xQueryBuilder = new XQueryBuilder();
         ArrayList result = xQueryBuilder.getAllCenters();
         return result;
+    }
+
+    /**
+     * Return all infos about a center
+     *
+     * TODO : Replace logic
+     *
+     * @return
+     */
+    @GET
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getCenterInfo(){
+        return "Salut";
     }
 }
