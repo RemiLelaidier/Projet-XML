@@ -10,6 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/highcharts-chart/highcharts-chart.html">
+<link rel="import" href="../bower_components/the-grid/the-grid.html">
 
 <link rel="import" href="shared-styles.html">
 
@@ -18,20 +19,85 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <style include="shared-styles">
       :host {
         display: block;
-
         padding: 10px;
+      }
+      the-grid {
+        width: 95%
+        margin: 10px auto;
       }
     </style>
 
     <div class="card">
       <h1>Statistiques</h1>
-      <highcharts-chart type="spline" data='[[0,0],[1,7],[2,1],[3,6],[4,8],[5,6]]' title='Test-Spline Chart' x-zoom x-label="Iterations" y-label="Awesomeness Index"></highcharts-chart>
+      <the-grid col-count="12" row-count="10" cell-margin="10">
+        <div class="tile" col="0" row="0" height="2" width="5">
+          <highcharts-chart
+            id="chart1"
+            type="spline"
+            title='Test-Spline Chart'
+            x-zoom
+            x-label="Iterations"
+            y-label="Awesomeness Index">
+          </highcharts-chart>
+        </div>
+        <div class="tile" col="6" row="0" height="2" width="5">
+          <highcharts-chart
+            id="chart2"
+            type="column"
+            title="Nombre de d'équipes par centres"
+            x-zoom
+            x-label="Centre"
+            y-label="Nombre d'équipes">
+          </highcharts-chart>
+        </div>
+      </the-grid>
     </div>
   </template>
 
   <script>
     class MyStats extends Polymer.Element {
       static get is() { return 'my-stats'; }
+
+      static get properties() {
+        return {
+          chart1: {
+            type: Object,
+          },
+          chart2: {
+            type: Object,
+          }
+        };
+      }
+
+      constructor(){
+        super();
+        // For getting the bubbles
+        this._shadowRoot = this.attachShadow({ mode: 'open' });
+
+        // Listen on RPCEvent fire from mi-rpc component
+        this._shadowRoot.addEventListener('rpcError', (event) => this._onRpcError(event));
+        this._shadowRoot.addEventListener('rpcResponse', (event) => this._onRpcResponse(event));
+      }
+
+      connectedCallback(){
+        super.connectedCallback();
+      }
+
+      ready(){
+        super.ready();
+        this.chart1 = this.shadowRoot.getElementById('chart1');
+        this.chart2 = this.shadowRoot.getElementById('chart2');
+        this.chart1.data = [[0,0],[1,7],[2,1],[3,6],[4,8],[5,6]];
+        this.chart2.data = [['Sophia', 0],["Paris",7],["Rouen",1],["Versailles",6],["Calais",8],["Perpignan",6]];
+      }
+
+      _onRpcError(event){
+        // TODO
+      }
+
+      _onRpcResponse(event){
+        // TODO
+      }
     }
 
     window.customElements.define(MyStats.is, MyStats);
