@@ -5,9 +5,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import org.inria.fr.ns.cr.Crs;
 import unice.miage.xml.builder.XQueryBuilder;
-import unice.miage.xml.model.Center;
 
 import java.util.ArrayList;
 

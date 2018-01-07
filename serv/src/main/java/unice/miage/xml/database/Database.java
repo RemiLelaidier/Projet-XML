@@ -66,6 +66,7 @@ public class Database {
                 baos.reset();
                 ser.serialize(item);
                 // Create the model and add it to result
+                // TODO GENERIFY
                 Crs crs = (Crs) unmarshaller.unmarshal(new ByteArrayInputStream(baos.toByteArray()));
                 result.add(crs);
             }
