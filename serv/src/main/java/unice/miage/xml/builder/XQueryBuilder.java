@@ -18,12 +18,29 @@ public class XQueryBuilder {
 
     /**
      * Get all Research Centers
-     * @return
+     * @return 
      */
     public ArrayList getAllCenters(){
         String query = "for $x in doc('" + this.crsFile + "')//crs " +
                 "return $x";
         ArrayList result = this.database.iterate(query, "org.inria.fr.ns.cr.Crs");
         return result;
+    }
+    
+    /**
+     * Get all informations for centers
+     * @param id
+     * @return
+     */
+    public ArrayList<Crs> getCenterInfo(String id) {
+    	String query = "declare $search nvarchar(max)"
+    			+ "set $search = " + id 
+    			+ "for $x in doc('" + this.crsFile + "')//crs " 
+    			+ "where ($x/siid = $search)" 
+    			+ "return $x";
+      System.out.println(id);
+    	 ArrayList result = this.database.iterate(query, "org.inria.fr.ns.cr.Crs");
+         return result; 
+    	
     }
 }
