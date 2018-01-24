@@ -26,4 +26,6 @@ public class XQueryBuilder {
         ArrayList result = this.database.iterate(query, "org.inria.fr.ns.cr.Crs");
         return result;
     }
+
+
 }
