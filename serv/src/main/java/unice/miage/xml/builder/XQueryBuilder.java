@@ -25,7 +25,7 @@ public class XQueryBuilder {
     public ArrayList getAllCenters(){
         String query = "for $x in doc('" + this.crsFile + "')//crs " +
                 "return $x";
-        ArrayList result = this.database.iterate(query, "org.inria.fr.ns.cr.Crs");
+        ArrayList result = this.database.iterate(query, "Crs");
         return result;
     }
     
@@ -34,6 +34,7 @@ public class XQueryBuilder {
      * @param id
      * @return
      */
+<<<<<<< HEAD
     public ArrayList<Crs> getCenterInfo(String id) {
     	String query = "declare $search nvarchar(max)"
     			+ "set $search = " + id 
@@ -68,6 +69,23 @@ public class XQueryBuilder {
     					+ "return $x";
     	 ArrayList result = this.database.iterate(query, "org.inria.fr.ns.sr.Srs");
          return result; 
+=======
+    public ArrayList getCenterInfo(String id) {
+    	String query = "for $x in doc('" + this.crsFile + "')//crs/cr "
+    			+ "where $x/numnatstructrep = '" + id
+    			+ "' return $x";
+        System.out.println(query);
+        ArrayList result = this.database.iterate(query, "Cr");
+        return result;
+>>>>>>> b7ad806f50877ad41fb0e97d05824ed76932f0fd
     	
+    }
+
+    public ArrayList getTeamsClose() {
+        return null;
+    }
+
+    public ArrayList getTeamsOpen() {
+        return null;
     }
 }

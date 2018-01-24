@@ -74,6 +74,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             type: String,
             value: "centers/list"
           },
+          selected: {
+            type: Number,
+            value: 0
+          },
           helper: Object,
           rpc: Object,
           map: Object,
@@ -177,17 +181,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         body.appendChild(libelle);
         div.appendChild(body);
         // Create responsables
-        const titre2 = document.createElement('h4');
-        titre2.innerHTML = 'Responsables'
-        div.appendChild(titre2);
         const tabs = this._createRespTabs(responsables.length);
         const views = this._createRespView(responsables);
-        // Listen for tabs change
-        tabs.addEventListener('selected-item-changed', function(event) {
-          debugger;
-          console.log(tabs.selected);
-          views.setAttribute('selected', tabs.selected);
-        });
         // Add Tabs system to info windows
         div.appendChild(tabs);
         div.appendChild(views);
@@ -197,11 +192,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       // Create tabs for responsables
       _createRespTabs(length){
         const tabs = document.createElement('paper-tabs');
+        tabs.setAttribute('selected', this.selected);
         let i = 0;
         while (i < length) {
           const tab = document.createElement('paper-tab');
-          tab.setAttribute('link', "");
-          tab.style.padding = '10px';
           tab.innerHTML = "<b>Responsable "+ i +"</b>";
           tabs.appendChild(tab);
           i++;
@@ -211,13 +205,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       // Create responsables view for tabs
       _createRespView(resps){
-        console.log(resps);
         const tabViews = document.createElement('iron-pages');
-        tabViews.setAttribute('selected', "0");
+        tabViews.setAttribute('selected', this.selected);
         let i = 0;
         while (i < resps.length) {
           const div = document.createElement('div');
-          div.id = "resp" + i;
+          div.id = i;
           const ul = document.createElement('ul');
           const li = document.createElement('li');
           li.innerHTML = "Test " + i;

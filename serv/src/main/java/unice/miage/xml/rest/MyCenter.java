@@ -35,9 +35,6 @@ public class MyCenter {
 
     /**
      * Return all infos about a center
-     *
-     * TODO : Replace logic
-     *
      * @return JSON
      */
     @GET
