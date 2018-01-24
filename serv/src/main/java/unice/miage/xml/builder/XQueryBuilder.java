@@ -1,6 +1,8 @@
 package unice.miage.xml.builder;
 
 import org.inria.fr.ns.cr.Crs;
+import org.inria.fr.ns.sr.UrlTeam;
+
 import unice.miage.xml.database.Database;
 
 import java.util.ArrayList;
@@ -40,6 +42,31 @@ public class XQueryBuilder {
     			+ "return $x";
       System.out.println(id);
     	 ArrayList result = this.database.iterate(query, "org.inria.fr.ns.cr.Crs");
+         return result; 
+    }
+    
+    /**
+     * Get all opened team
+     * @return
+     */
+    public ArrayList<UrlTeam> geturlTeamOpen() {
+    	String query =	 "for $x in doc('" + this.srsFile + "')//srs " 
+    					+ "where (current-date() < $date_fermeture)" 
+    					+ "return $x";
+    	 ArrayList result = this.database.iterate(query, "org.inria.fr.ns.cr.Crs");
+         return result; 
+    	
+    }
+    
+    /**
+     * Get all closed team
+     * @return
+     */
+    public ArrayList<UrlTeam> geturlTeamClose() {
+    	String query =	 "for $x in doc('" + this.srsFile + "')//srs " 
+    					+ "where (current-date() > $date_fermeture)" 
+    					+ "return $x";
+    	 ArrayList result = this.database.iterate(query, "org.inria.fr.ns.sr.Srs");
          return result; 
     	
     }

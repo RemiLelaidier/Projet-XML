@@ -6,9 +6,12 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.inria.fr.ns.sr.UrlTeam;
+
 import unice.miage.xml.builder.XQueryBuilder;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Root resource (exposed at "myresource" path)
@@ -45,4 +48,5 @@ public class MyCenter {
         ArrayList result = xQueryBuilder.getCenterInfo(id);
         return result;
         }
+    
 }
