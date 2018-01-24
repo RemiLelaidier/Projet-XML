@@ -43,4 +43,12 @@ public class XQueryBuilder {
          return result; 
     	
     }
+
+    public ArrayList getTeamsClose() {
+        return null;
+    }
+
+    public ArrayList getTeamsOpen() {
+        return null;
+    }
 }
