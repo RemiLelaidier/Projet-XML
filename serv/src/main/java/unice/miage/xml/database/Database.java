@@ -53,8 +53,6 @@ public class Database {
         try {
             // Create JAXB context and populate the chosen model
             ArrayList result = new ArrayList<>();
-            JAXBContext jaxbContext = JAXBContext.newInstance(Class.forName(classType));
-            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
             // Create XQuery context
             QueryProcessor proc = new QueryProcessor(query, context);
             Iter iter = proc.iter();
@@ -62,19 +60,36 @@ public class Database {
             Serializer ser = proc.getSerializer(baos);
             proc.close();
             // Iterate on the result
+            Unmarshaller unmarshaller = createUnmarShaller(classType);
             for(Item item; (item = iter.next()) != null;) {
                 baos.reset();
                 ser.serialize(item);
                 // Create the model and add it to result
-                Object crs = unmarshaller.unmarshal(new ByteArrayInputStream(baos.toByteArray()));
-                result.add(crs);
+                Object res = unmarshaller.unmarshal(new ByteArrayInputStream(baos.toByteArray()));
+                result.add(res);
             }
             return result;
 
-        }catch (QueryException | IOException | JAXBException | ClassNotFoundException e){
+        }catch (QueryException | IOException | JAXBException  e){
             e.printStackTrace();
         }
         return null;
+    }
+
+    /**
+     * Create the UnMarshaller
+     * @param type
+     * @return
+     */
+    private Unmarshaller createUnmarShaller(String type) throws JAXBException {
+        JAXBContext jaxbContext = null;
+        if(type == "Crs"){
+            jaxbContext = JAXBContext.newInstance(Crs.class);
+        }
+        if(type == "Cr"){
+            jaxbContext = JAXBContext.newInstance(Crs.class);
+        }
+        return jaxbContext.createUnmarshaller();
     }
 
 
